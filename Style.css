@@ -25,6 +25,16 @@
 
     --box-shadow: 0.01rem 0.5rem var(--color-light)
   }
+
+  /*---------- DARK THEME VARIABLES ----------*/
+.dark-theme-variables{
+   --color-background:#181a1e;
+   --color-white:#202528;
+   --color-dark:#edeffd;
+   --color-dark-variant:#a3bdcc;
+   --color-light:rgba(0, 0, 0, 0.4);
+   --box-shadow:0.2rem 3rem var(--color-light);
+  }
  
   *{
     margin: 0;
@@ -153,7 +163,7 @@ html{
       display: none;
    }
 /* ============== SIDEBAR ============= */
-   aside .asidebar {
+   aside .sidebar {
       background: white;
       display: flex;
       flex-direction: column;
@@ -166,59 +176,59 @@ html{
       font-weight: 500;
      }
   
-   aside .asidebar a{
-        display: flex;
-        color: var(--color-info-dark);
-        margin-left: 2rem;
-        gap: 1rem;
-        align-items: center;
-        position: relative;
-        height: 3.7rem;
-        transition: all 300ms ease;
-     }
+     aside .sidebar a{
+      display: flex;
+      color: var(--color-info-dark);
+      margin-left: 2rem;
+      gap: 1rem;
+      align-items: center;
+      position: relative;
+      height: 3.7rem;
+      transition: all 300ms ease;
+   }
 
-     aside .asidebar a span {
+   aside .sidebar a span {
       font-size: 1.6rem;
       transition: all 300ms ease;
    }
 
-   aside .asidebar a:last-child{
+   aside .sidebar a .logout:last_child { 
       position:absolute;
       bottom:2rem;
       width:100%;
    }
 
-   aside .asidebar a.active{
+   aside .sidebar a.active {
       background: var(--color-light);
       color: var(--color-primary);
       margin-left: 0;
    }
 
-   aside .asidebar a.active:before{
+   aside .sidebar a .active:before {
       content: "";
       width: 6px;
       height: 100%;
       background: var(--color-primary);
    }
 
-   aside .asidebar a.active span {
+   aside .sidebar a .active span {
       color: blue;
       margin-left: calc(1rem-3px);
    }   
 
-  aside .asidebar a:hover{
+  aside .sidebar a:hover {
    color: var(--color-primary);
   }
 
-  aside .asidebar a:hover span{
+  aside .sidebar a:hover span{
    margin-left: 1rem;
   }
  
-  aside .asidebar .message-count{
+  aside .sidebar .Messages-count {
    background: var(--color-danger);
    color: var(--color-white);
-   padding: 2px 10px;
-   font-size: 11px;
+   padding: 10px 0.5rem;
+   font-size: 7px;
    border-radius: var(--border-radius-1);
   } 
   
@@ -267,18 +277,12 @@ main .insights > div span{
    font-size: 2rem;
 }
 
-main .insights > div.expenses span {
+main .insights > div.Expenses span {
    background: var(--color-danger);
 }
 
-main .insights > div.income span {
-   background: var(--color-succces);
-}
-
-main .insights > div.income .middle{
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
+main .insights > div.Income span {
+   background: var(--color-primary);
 }
 
 main .insights h3 {
@@ -313,14 +317,14 @@ main .insights .sales svg circle{
    stroke-dasharray: 200;
 }
 
-main .insights .expenses svg circle{
-   stroke-dashoffset: 35;
-   stroke-dasharray:100;
+main .insights .Expenses svg circle{
+   stroke-dashoffset: 2;
+   stroke-dasharray: 100;
 }
 
-main .insights .income svg circle{
+main .insights .Income svg circle{
    stroke-dashoffset: -53;
-   stroke-dasharray: 110;
+   stroke-dasharray: 120;
 }
 
 main .insights .progress .number {
@@ -422,7 +426,7 @@ main .recent-orders a {
    border-radius: var(--border-radius-1);
 }
 
-.right .top .proile {
+.right .top .profile {
    display: flex;
    gap: 2rem;
    text-align: right;
@@ -436,22 +440,22 @@ main .recent-orders a {
    margin-bottom: 0.8rem;
 }
 
-.right.recent-updates.updates{
+.right .recent-updates .update{
    background: var(--color-white);
    padding: var(--card-padding);
    border-radius: var(--card-border-radius);
    box-shadow: var(--box-shadow);
    transition: all 300ms ease;
 }
-.right .recent-updates .updates:hover {
+.right .recent-updates .update:hover {
    box-shadow: none;
 }
 
-.right .recent-updates .updates .updates {
+.right .recent-updates .update {
    display: grid;
    grid-template-columns: 2.6rem auto;
    gap: 1rem;
-   margin-bottom: 1rem;
+   margin-bottom: 1.5rem;
 }
 
 /*=====SALES ANALYTICS====*/
@@ -508,6 +512,184 @@ main .recent-orders a {
    padding: 0.6rem;
    color: var(--color-white);
    border-radius: 50%;
-   background: var(--color-primary);
+   background: var(--color-success);
    display: flex;
+}
+
+.right .sales-analytics .item.offline .icon {
+   background: var(--color-danger);
+}
+
+.right .sales-analytics .item.customers .icon {
+   background: var(--color-primary);
+}
+
+.right .sales-analytics .add-product {
+   background-color: transparent;
+   border: 2px dashed var(--color-primary);
+   color: var(--color-success);
+   align-items: center;
+   justify-content: center;
+}
+
+.right .sales-analytics .add-product div {
+   display: flex;
+   align-items: center;
+   gap: 0.6rem;
+}
+
+.right .sales-analytics .add-product div h3{
+   font-weight: 600;
+}
+
+/*====== MEDIA QUERIES ====== */
+@media screen and (max-width: 1200px) {
+   .container {
+      width: 94%;
+      grid-template-columns: 7rem auto 23rem;
+   }
+   
+   aside .logo h2 {
+      display: none;
+   }
+
+   aside .sidebar h3 {
+      display: none;
+   }
+
+   aside .sidebar a:last-child{
+      position:relative;
+      margin-top: 1.8rem;
+   }
+
+   main .insights {
+      grid-template-columns: 1fr;
+      gap: 0;
+   }
+
+   main .recent-orders {
+      width: 94%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 2rem 0 0 8.8rem;
+   }
+
+   main .recent-orders table {
+      width: 86vw;
+   }
+
+   main table thead tr th:last-child,
+   main table thead tr th:first-child {
+      display: none;
+   }
+   
+   main table tbody tr td:last-child,
+   main table tbody tr td:first-child {
+      display: none;
+   }
+}
+
+/*====== MEDIA QUERIES ====== */
+@media screen and (max-width: 768px) {
+   .container {
+      width: 100%;
+      grid-template-columns: 1fr;
+   }
+
+   aside {
+      position: fixed;
+      left: -100;
+      background: var(--color-white);
+      width: 18rem;
+      z-index: 3;
+      box-shadow: 1rem 3rem 4rem var(--color-light);
+      height: 100vh;
+      padding-right: var(--card-padding);
+      display: none;
+      animation: showMenu 400ms ease forwards;
+   }
+
+   @keyframes showMenu {
+      to{
+         left: 0;
+      }
+   }
+
+   aside .logo{
+      margin-left: 1rem;
+   }
+
+   aside .logo h2 {
+      display: inline;
+   }
+
+   aside .logo h3 {
+      display: inline;
+   }
+
+   aside .sidebar a{
+      width: 100%;
+      height: 3.4rem;
+   }
+
+   aside .sidebar a:last-child{
+      position: absolute;
+      bottom: 5rem;
+   }
+
+   aside .close {
+      display: inline-block;
+      cursor: pointer;
+   }
+
+   main {
+      margin-top: 8rem;
+      padding: 0.1rem;
+   }
+
+   main .recent-orders {
+      position: relative;
+      margin: 3rem 0 0 0;
+      width: 100%;
+   }
+
+   main .recent-orders table {
+      width: 80%;
+      margin: 0;
+   }
+
+   .right {
+      width: 94%;
+      margin: 0 auto 4rem;
+   }
+
+   .right .top{
+      position: fixed;
+      top: 0;
+      left: 0;
+      align-items: center;
+      padding: 0 0.8rem;
+      height: 4.6rem;
+      background: var(--color-white);
+   }
+
+   .right .top .theme-toggler {
+      width: 4.4rem;
+      position: absolute;
+      left: 400%;
+   }
+
+   .right .top button {
+      display: inline-block;
+      background: var(--color-success);
+      cursor: pointer;
+      color: var(--color-dak);
+      position: absolute;
+      left: 1rem;
+   }
+
+   .right .top button span {
+      font-size: 2rem;
+   }
 }
